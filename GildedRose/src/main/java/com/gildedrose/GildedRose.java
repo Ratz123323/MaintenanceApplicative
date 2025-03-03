@@ -49,7 +49,9 @@ class GildedRose {
     }
     
     private void updateSulfuras(Item item){
-        // nothing to do
+        if(item.quality != 80){
+            item.quality = 80;
+        }
     }
     
     private void updateConcert(Item item){
@@ -67,6 +69,9 @@ class GildedRose {
     
     private void updateConjured(Item item){
         decrementItemSellIn(item);
+        if(item.sellIn < 0){
+            decrementItemQuality(item, 2);
+        }
         decrementItemQuality(item, 2);
     }
     
