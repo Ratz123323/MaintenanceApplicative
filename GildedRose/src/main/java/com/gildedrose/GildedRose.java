@@ -4,6 +4,7 @@ class GildedRose {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
     public static final String BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String CONJURED = "Conjured";
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -28,6 +29,9 @@ class GildedRose {
                 break;
             case BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT:
                 updateConcert(item);
+                break;
+            case CONJURED:
+                updateConjured(item);
                 break;
             default:
                 updateDefaultItem(item);
@@ -61,20 +65,28 @@ class GildedRose {
         decrementItemSellIn(item);
     }
     
+    private void updateConjured(Item item){
+        decrementItemSellIn(item);
+        decrementItemQuality(item, 2);
+    }
+    
     private void updateDefaultItem(Item item){
         decrementItemSellIn(item);
         if(item.sellIn < 0){
-            decrementItemQuality(item);
+            decrementItemQuality(item, 2);
+        } else {
+            decrementItemQuality(item, 1);
         }
-        decrementItemQuality(item);
     }
     
     
-    private void decrementItemQuality(Item item){
-        if(item.quality <= 0){
-            item.quality = 0;
-        } else {
-            item.quality -= 1;
+    private void decrementItemQuality(Item item, int number){
+        for(int i = 1; i <= number; i++){
+            if(item.quality <= 0){
+                item.quality = 0;
+            } else {
+                item.quality -= 1;
+            }
         }
     }
     
