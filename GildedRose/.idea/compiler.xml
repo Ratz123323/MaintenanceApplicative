@@ -9,5 +9,8 @@
         <module name="gilded-rose-kata" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gilded-rose-kata" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
