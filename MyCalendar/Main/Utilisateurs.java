@@ -2,6 +2,7 @@ package Main;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class Utilisateurs {
 	private final Map<String, Utilisateur> utilisateurs;
@@ -12,9 +13,10 @@ public class Utilisateurs {
 		motsDePasses = new HashMap<>();
 	}
 	
-	public void ajouterUtilisateur(Utilisateur utilisateur, MotDePasse motDePasse) {
+	public Optional<Utilisateur> ajouterUtilisateur(Utilisateur utilisateur, MotDePasse motDePasse) {
 		utilisateurs.put(utilisateur.nom(), utilisateur);
 		motsDePasses.put(utilisateur.nom(), motDePasse);
+		return Optional.of(utilisateur);
 	}
 	
 	public boolean validerUtilisateur(String nom, String motDePasse) {

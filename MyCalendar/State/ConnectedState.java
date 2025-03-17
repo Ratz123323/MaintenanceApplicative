@@ -36,7 +36,7 @@ public class ConnectedState implements AppState {
 	public AppState run(Scanner scanner) {
 		displayMenu();
 		String choix = scanner.nextLine();
-		AppStateCommand cmd = commandes.getOrDefault(choix, cs -> new InvalidCommand(cs)).apply(this);
+		AppStateCommand cmd = commandes.getOrDefault(choix, InvalidCommand::new).apply(this);
 		return cmd.execute(scanner);
 	}
 	public Utilisateur getUtilisateur() { return utilisateur; }
