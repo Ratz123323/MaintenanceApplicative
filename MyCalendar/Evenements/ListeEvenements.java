@@ -7,7 +7,7 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 public class ListeEvenements {
-	private List<Evenement> evenements;
+	private final List<Evenement> evenements;
 	
 	public ListeEvenements() {
 		this.evenements = new ArrayList<>();
@@ -67,4 +67,10 @@ public class ListeEvenements {
 		}
 		return false;
 	}
+	
+//	public boolean conflit(Evenement e1, Evenement e2) {
+//		return (e1.type() != TypeEvenement.PERIODIQUE && e2.type() != TypeEvenement.PERIODIQUE) &&
+//				e1.dateDebut().dateDebut().isBefore(e2.dateDebut().dateDebut().plusMinutes(e2.dureeMinutes().dureeMinutes())) &&
+//				e1.dateDebut().dateDebut().plusMinutes(e1.dureeMinutes().dureeMinutes()).isAfter(e2.dateDebut().dateDebut());
+//	}
 }
