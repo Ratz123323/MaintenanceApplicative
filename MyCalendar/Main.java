@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 import Evenements.*;
-        import Main.*;
+import Main.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,11 +11,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Utilisateur utilisateur = null;
         boolean continuer = true;
-
-        // Gestion des utilisateurs
+        
         Utilisateurs gestionUtilisateurs = new Utilisateurs();
-        gestionUtilisateurs.ajouterUtilisateur(new Utilisateur("Roger"), new MotDePasse("Chat"));
-        gestionUtilisateurs.ajouterUtilisateur(new Utilisateur("Pierre"), new MotDePasse("KiRouhl"));
 
         while (true) {
             if (utilisateur == null) {
@@ -132,7 +129,7 @@ public class Main {
         FrequenceJoursEvenement frequenceJoursEvenement = new FrequenceJoursEvenement(0);
         TypeEvenement typeEvenement = TypeEvenement.RDV_PERSONNEL;
 
-        calendar.ajouterEvent(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement,
+        calendar.ajouterEvenement(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement,
                 lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement);
         System.out.println("Événement ajouté.");
     }
@@ -178,7 +175,7 @@ public class Main {
         TypeEvenement typeEvenement = TypeEvenement.REUNION;
         
         // Ajouter l'événement au calendrier
-        calendar.ajouterEvent(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement,
+        calendar.ajouterEvenement(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement,
                 lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement);
         
         System.out.println("Réunion ajoutée.");
@@ -215,7 +212,7 @@ public class Main {
         TypeEvenement typeEvenement = TypeEvenement.PERIODIQUE;
         
         // Ajouter l'événement périodique au calendrier
-        calendar.ajouterEvent(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement,
+        calendar.ajouterEvenement(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement,
                 lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement);
         
         System.out.println("Événement périodique ajouté.");
