@@ -1,15 +1,6 @@
 package Evenements;
 
-public class LieuEvenement {
-	private final String lieu;
-	
-	public LieuEvenement(String lieu) {
-		this.lieu = lieu;
-	}
-	
-	public String getLieu() {
-		return lieu;
-	}
+public record LieuEvenement(String lieu) {
 	
 	@Override
 	public String toString() {

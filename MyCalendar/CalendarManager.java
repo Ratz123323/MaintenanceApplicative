@@ -1,9 +1,11 @@
 import Evenements.*;
+import Evenements.TypeEvenements.TypeEvenement;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class CalendarManager {
-    private ListeEvenements listeEvenements;
+    private final ListeEvenements listeEvenements;
     
     public CalendarManager() {
         this.listeEvenements = new ListeEvenements();
@@ -12,7 +14,7 @@ public class CalendarManager {
     public void ajouterEvenement(TitreEvenement titre, ProprietaireEvenement proprietaire, DateDebutEvenement dateDebut,
                                  DureeMinutesEvenement dureeMinutes, LieuEvenement lieu, ParticipantsEvenement participants,
                                  FrequenceJoursEvenement frequenceJours, TypeEvenement type) {
-        Event e = new Event(titre, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours, type);
+        Evenement e = new Evenement(titre, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours, type);
         listeEvenements.ajouterEvenement(e);
     }
     
@@ -20,11 +22,11 @@ public class CalendarManager {
         listeEvenements.afficherEvenements();
     }
     
-    public boolean verifierConflit(Event e1, Event e2) {
+    public boolean verifierConflit(Evenement e1, Evenement e2) {
         return listeEvenements.conflit(e1, e2);
     }
     
-    public List<Event> obtenirEvenementsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+    public List<Evenement> obtenirEvenementsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
         return listeEvenements.evenementsDansPeriode(debut, fin);
     }
 }

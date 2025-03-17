@@ -13,8 +13,8 @@ public class Utilisateurs {
 	}
 	
 	public void ajouterUtilisateur(Utilisateur utilisateur, MotDePasse motDePasse) {
-		utilisateurs.put(utilisateur.getNom(), utilisateur);
-		motsDePasses.put(utilisateur.getNom(), motDePasse);
+		utilisateurs.put(utilisateur.nom(), utilisateur);
+		motsDePasses.put(utilisateur.nom(), motDePasse);
 	}
 	
 	public boolean validerUtilisateur(String nom, String motDePasse) {

@@ -3,6 +3,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 import Evenements.*;
+import Evenements.TypeEvenements.*;
 import Main.*;
 
 public class Main {
@@ -61,7 +62,7 @@ public class Main {
             }
 
             while (utilisateur != null && continuer) {
-                System.out.println("\nBonjour, " + utilisateur.getNom());
+                System.out.println("\nBonjour, " + utilisateur.nom());
                 System.out.println("=== Menu Gestionnaire d'Événements ===");
                 System.out.println("1 - Voir les événements");
                 System.out.println("2 - Ajouter un rendez-vous perso");
@@ -121,7 +122,7 @@ public class Main {
         String lieu = scanner.nextLine();
 
         TitreEvenement titreEvenement = new TitreEvenement(titre);
-        ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(utilisateur.getNom());
+        ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(utilisateur.nom());
         DateDebutEvenement dateDebutEvenement = new DateDebutEvenement(LocalDateTime.of(annee, mois, jour, heure, minute));
         DureeMinutesEvenement dureeMinutesEvenement = new DureeMinutesEvenement(duree);
         LieuEvenement lieuEvenement = new LieuEvenement(lieu);
@@ -154,7 +155,7 @@ public class Main {
         String lieu = scanner.nextLine();
         
         // Ajouter un participant initial (l'utilisateur actuel)
-        String participants = utilisateur.getNom();
+        String participants = utilisateur.nom();
         
         // Ajouter d'autres participants
         boolean encore = true;
@@ -166,7 +167,7 @@ public class Main {
         
         // Création des Value Objects
         TitreEvenement titreEvenement = new TitreEvenement(titre);
-        ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(utilisateur.getNom());
+        ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(utilisateur.nom());
         DateDebutEvenement dateDebutEvenement = new DateDebutEvenement(LocalDateTime.of(annee, mois, jour, heure, minute));
         DureeMinutesEvenement dureeMinutesEvenement = new DureeMinutesEvenement(duree);
         LieuEvenement lieuEvenement = new LieuEvenement(lieu);
@@ -203,7 +204,7 @@ public class Main {
         
         // Création des Value Objects
         TitreEvenement titreEvenement = new TitreEvenement(titre);
-        ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(utilisateur.getNom());
+        ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(utilisateur.nom());
         DateDebutEvenement dateDebutEvenement = new DateDebutEvenement(LocalDateTime.of(annee, mois, jour, heure, minute));
         DureeMinutesEvenement dureeMinutesEvenement = new DureeMinutesEvenement(0);
         LieuEvenement lieuEvenement = new LieuEvenement(lieu);
