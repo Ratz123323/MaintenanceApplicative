@@ -6,9 +6,6 @@ public class ParticipantsEvenement {
 	private final List<String> participants;
 	
 	public ParticipantsEvenement(List<String> participants) {
-		if (participants == null || participants.isEmpty()) {
-			throw new IllegalArgumentException("La liste des participants ne peut pas être vide");
-		}
 		this.participants = participants;
 	}
 	

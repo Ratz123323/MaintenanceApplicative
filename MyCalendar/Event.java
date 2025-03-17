@@ -1,36 +1,77 @@
-import java.time.LocalDateTime;
+import Evenements.*;
 
 public class Event {
-    public String type; // "RDV_PERSONNEL", "REUNION", "PERIODIQUE"
-    public String title;
-    public String proprietaire;
-    public LocalDateTime dateDebut;
-    public int dureeMinutes;
-    public String lieu; // utilisé seulement pour REUNION
-    public String participants; // séparés par virgules (pour REUNION uniquement)
-    public int frequenceJours; // uniquement pour PERIODIQUE
-
-    public Event(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes,
-                 String lieu, String participants, int frequenceJours) {
-        this.type = type;
-        this.title = title;
+    private TitreEvenement titre;
+    private ProprietaireEvenement proprietaire;
+    private DateDebutEvenement dateDebut;
+    private DureeMinutesEvenement dureeMinutes;
+    private LieuEvenement lieu;
+    private ParticipantsEvenement participants;
+    private FrequenceJoursEvenement frequenceJours;
+    private TypeEvenement type;
+    
+    // Constructeur pour tous les types d'événements
+    public Event(TitreEvenement titre, ProprietaireEvenement proprietaire, DateDebutEvenement dateDebut,
+                 DureeMinutesEvenement dureeMinutes, LieuEvenement lieu, ParticipantsEvenement participants,
+                 FrequenceJoursEvenement frequenceJours, TypeEvenement type) {
+        this.titre = titre;
         this.proprietaire = proprietaire;
         this.dateDebut = dateDebut;
         this.dureeMinutes = dureeMinutes;
         this.lieu = lieu;
         this.participants = participants;
         this.frequenceJours = frequenceJours;
+        this.type = type;
     }
-
+    
+    // Méthode pour décrire l'événement en fonction du type
     public String description() {
-        String desc = "";
-        if (type.equals("RDV_PERSONNEL")) {
-            desc = "RDV : " + title + " à " + dateDebut.toString();
-        } else if (type.equals("REUNION")) {
-            desc = "Réunion : " + title + " à " + lieu + " avec " + participants;
-        } else if (type.equals("PERIODIQUE")) {
-            desc = "Événement périodique : " + title + " tous les " + frequenceJours + " jours";
+        StringBuilder desc = new StringBuilder();
+        if (type == TypeEvenement.RDV_PERSONNEL) {
+            desc.append("RDV : ").append(titre).append(" à ").append(dateDebut);
+        } else if (type == TypeEvenement.REUNION) {
+            desc.append("Réunion : ").append(titre).append(" à ").append(lieu).append(" avec ").append(participants);
+        } else if (type == TypeEvenement.PERIODIQUE) {
+            desc.append("Événement périodique : ").append(titre).append(" tous les ").append(frequenceJours);
         }
-        return desc;
+        return desc.toString();
+    }
+    
+    // Getter et Setter pour chaque attribut
+    public TitreEvenement getTitre() {
+        return titre;
+    }
+    
+    public ProprietaireEvenement getProprietaire() {
+        return proprietaire;
+    }
+    
+    public DateDebutEvenement getDateDebut() {
+        return dateDebut;
+    }
+    
+    public DureeMinutesEvenement getDureeMinutes() {
+        return dureeMinutes;
+    }
+    
+    public LieuEvenement getLieu() {
+        return lieu;
+    }
+    
+    public ParticipantsEvenement getParticipants() {
+        return participants;
+    }
+    
+    public FrequenceJoursEvenement getFrequenceJours() {
+        return frequenceJours;
+    }
+    
+    public TypeEvenement getType() {
+        return type;
+    }
+    
+    @Override
+    public String toString() {
+        return description();
     }
 }
