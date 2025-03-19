@@ -17,7 +17,19 @@ public class CalendarManager {
                                  DureeMinutesEvenement dureeMinutes, LieuEvenement lieu, ParticipantsEvenement participants,
                                  FrequenceJoursEvenement frequenceJours, TypeEvenement type, PresentateurEvenement presentateur) {
         Evenement e = new Evenement(titre, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours, type, presentateur);
-        listeEvenements.ajouterEvenement(e);
+        
+        boolean conflit = false;
+        
+        for (Evenement event : listeEvenements.obtenirEvenements()){
+            if(verifierConflit(e, event)){
+                conflit = true;
+                System.out.println("Conflit avec l'événement suivant : " + event);
+                break;
+            }
+        }
+        if(!conflit){
+            listeEvenements.ajouterEvenement(e);
+        }
     }
     
     public void afficherEvenements() {
