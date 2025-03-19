@@ -2,6 +2,7 @@ package State;
 
 import Evenements.*;
 import Evenements.TypeEvenements.*;
+import jdk.jfr.Event;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -38,6 +39,7 @@ public class AddConferenceCommand implements AppStateCommand {
 		String autres = scanner.nextLine();
 		String participants = state.getUtilisateur().nom() + (autres.trim().isEmpty() ? "" : ", " + autres);
 		
+		EventId eventId = new EventId((int) (Math.random() * 1000) + 1);
 		TitreEvenement titreEvenement = new TitreEvenement(titre);
 		ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(state.getUtilisateur().nom());
 		DateDebutEvenement dateDebutEvenement = new DateDebutEvenement(LocalDateTime.of(annee, mois, jour, heure, minute));
@@ -48,7 +50,9 @@ public class AddConferenceCommand implements AppStateCommand {
 		TypeEvenement typeEvenement = TypeEvenement.CONFERENCE;
 		PresentateurEvenement presentateurEvenement = new PresentateurEvenement(presentateur);
 		
-		state.getCalendar().ajouterEvenement(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement, lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement, presentateurEvenement);
+		Evenement e = new Evenement(eventId, titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement, lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement, presentateurEvenement);
+		
+		state.getCalendar().ajouterEvenement(e);
 		System.out.println("Conférence ajoutée avec le présentateur : " + presentateurEvenement);
 		
 		return state;

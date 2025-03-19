@@ -13,11 +13,7 @@ public class CalendarManager {
         this.listeEvenements = new ListeEvenements();
     }
     
-    public void ajouterEvenement(TitreEvenement titre, ProprietaireEvenement proprietaire, DateDebutEvenement dateDebut,
-                                 DureeMinutesEvenement dureeMinutes, LieuEvenement lieu, ParticipantsEvenement participants,
-                                 FrequenceJoursEvenement frequenceJours, TypeEvenement type, PresentateurEvenement presentateur) {
-        Evenement e = new Evenement(titre, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours, type, presentateur);
-        
+    public void ajouterEvenement(Evenement e) {
         listeEvenements.ajouterSiPasDeConflit(e);
     }
     
@@ -28,5 +24,9 @@ public class CalendarManager {
     public void obtenirEvenementsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
         List<Evenement> events = listeEvenements.evenementsDansPeriode(debut, fin);
         listeEvenements.affichageConflit(events);
+    }
+    
+    public void supprimerEvenement(EventId id) {
+        listeEvenements.supprimerEvenement(id);
     }
 }

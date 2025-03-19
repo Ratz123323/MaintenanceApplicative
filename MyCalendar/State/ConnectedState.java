@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
 
-import Main.*;
+import UsersInformations.*;
 
 public class ConnectedState implements AppState {
 	
@@ -25,7 +25,8 @@ public class ConnectedState implements AppState {
 				"4", AddReunionCommand::new,
 				"5", AddConferenceCommand::new,
 				"6", AddPeriodicCommand::new,
-				"7", DisconnectCommand::new
+				"7", DeleteEventCommand::new,
+				"8", DisconnectCommand::new
 		);
 	}
 	
@@ -38,7 +39,8 @@ public class ConnectedState implements AppState {
 		System.out.println("4 - Ajouter une réunion");
 		System.out.println("5 - Ajouter une conférence");
 		System.out.println("6 - Ajouter un évènement périodique");
-		System.out.println("7 - Se déconnecter");
+		System.out.println("7 - Supprimer un événement");
+		System.out.println("8 - Se déconnecter");
 		System.out.print("Votre choix : ");
 	}
 	

@@ -1,4 +1,4 @@
-package Main;
+package UsersInformations;
 
 public record Utilisateur(String nom) {
 	public Utilisateur {

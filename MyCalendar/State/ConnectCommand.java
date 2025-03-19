@@ -1,6 +1,6 @@
 package State;
 
-import Main.*;
+import UsersInformations.*;
 
 import java.util.Optional;
 import java.util.Scanner;

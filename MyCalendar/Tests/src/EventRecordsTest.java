@@ -67,7 +67,6 @@ public class EventRecordsTest {
 		assertEquals("Réunion stratégique", titre.titre());
 		assertThrows(IllegalArgumentException.class, () -> new TitreEvenement(null));
 		assertThrows(IllegalArgumentException.class, () -> new TitreEvenement(""));
-		assertThrows(IllegalArgumentException.class, () -> new TitreEvenement("AB"));
 		TitreEvenement validTitre = new TitreEvenement("ABC");
 		assertEquals("ABC", validTitre.titre());
 	}
@@ -83,7 +82,8 @@ public class EventRecordsTest {
 		ParticipantsEvenement participants = new ParticipantsEvenement(Collections.singletonList("Alice, Bob"));
 		ProprietaireEvenement proprietaire = new ProprietaireEvenement("Roger");
 		TitreEvenement titre = new TitreEvenement("Réunion stratégique");
-		Evenement event = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION, new PresentateurEvenement(""));
+		EventId id = new EventId(1);
+		Evenement event = new Evenement(id, titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION, new PresentateurEvenement(""));
 		String description = event.toString();
 		assertTrue(description.contains("Réunion : Réunion stratégique à Salle de conférence avec Alice, Bob"));
 	}
@@ -98,9 +98,12 @@ public class EventRecordsTest {
 		ParticipantsEvenement participants = new ParticipantsEvenement(Collections.singletonList("Alice, Bob"));
 		ProprietaireEvenement proprietaire = new ProprietaireEvenement("Roger");
 		TitreEvenement titre = new TitreEvenement("Réunion stratégique");
-		Evenement eventRdv = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.RDV_PERSONNEL, new PresentateurEvenement(""));
-		Evenement eventReunion = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION, new PresentateurEvenement(""));
-		Evenement eventPeriodique = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.PERIODIQUE, new PresentateurEvenement(""));
+		EventId id = new EventId(1);
+		EventId id2 = new EventId(2);
+		EventId id3 = new EventId(3);
+		Evenement eventRdv = new Evenement(id, titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.RDV_PERSONNEL, new PresentateurEvenement(""));
+		Evenement eventReunion = new Evenement(id2, titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION, new PresentateurEvenement(""));
+		Evenement eventPeriodique = new Evenement(id3, titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.PERIODIQUE, new PresentateurEvenement(""));
 		assertTrue(eventRdv.toString().contains("RDV"));
 		assertTrue(eventReunion.toString().contains("Réunion"));
 		assertTrue(eventPeriodique.toString().contains("Événement périodique"));

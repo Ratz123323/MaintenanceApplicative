@@ -3,7 +3,7 @@ package State;
 import java.util.Map;
 import java.util.Scanner;
 
-import Main.Utilisateurs;
+import UsersInformations.Utilisateurs;
 
 public class DisconnectedState implements AppState {
 	

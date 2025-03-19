@@ -1,7 +1,7 @@
 import Evenements.*;
 import Evenements.TypeEvenements.*;
 import State.*;
-import Main.*;
+import UsersInformations.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
@@ -32,6 +32,7 @@ class ShowEventsInPeriodTest {
 	@Test
 	void testObtenirEvenementsDansPeriode() {
 		// Ajout d'un événement dans la période
+		EventId id = new EventId(1);
 		TitreEvenement titre = new TitreEvenement("Réunion Projet");
 		ProprietaireEvenement proprietaire = new ProprietaireEvenement("TestUser");
 		DateDebutEvenement dateDebut = new DateDebutEvenement(LocalDateTime.of(2025, 5, 10, 14, 0));
@@ -41,7 +42,9 @@ class ShowEventsInPeriodTest {
 		FrequenceJoursEvenement frequence = new FrequenceJoursEvenement(1);
 		PresentateurEvenement presentateur = new PresentateurEvenement("Dr. Smith");
 		
-		calendar.ajouterEvenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION, presentateur);
+		Evenement e = new Evenement(id, titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION, presentateur);
+		
+		calendar.ajouterEvenement(e);
 		
 		// Simulation de l'entrée utilisateur pour une période contenant l'événement
 		String input = "2025\n5\n10\n13\n30\n2025\n5\n10\n15\n00\n";

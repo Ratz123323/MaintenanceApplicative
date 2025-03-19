@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import Main.Utilisateurs;
+import UsersInformations.Utilisateurs;
 import State.AppState;
 import State.CalendarManager;
 import State.DisconnectedState;

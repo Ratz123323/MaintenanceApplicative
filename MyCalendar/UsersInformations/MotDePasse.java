@@ -1,4 +1,4 @@
-package Main;
+package UsersInformations;
 
 public class MotDePasse {
 	private final String motDePasse;

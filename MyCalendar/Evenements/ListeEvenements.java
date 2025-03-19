@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class ListeEvenements {
 	private final List<Evenement> evenements;
 	
@@ -79,7 +81,9 @@ public class ListeEvenements {
 			}
 		}
 		if(!conflit){
-			ajouterEvenement(event);
+			EventId id = getCorrectId(event.id());
+			Evenement goodEvent = new Evenement(id, event.titre(), event.proprietaire(), event.dateDebut(), event.dureeMinutes(), event.lieu(), event.participants(), event.frequenceJours(), event.type(), event.presentateur());
+			ajouterEvenement(goodEvent);
 		}
 	}
 	
@@ -95,5 +99,25 @@ public class ListeEvenements {
 				System.out.println(e);
 			}
 		}
+	}
+	
+	public void supprimerEvenement(EventId id) {
+		for (Evenement e : evenements) {
+			if (e.id().equals(id)) {
+				evenements.remove(e);
+				System.out.println("Événement supprimé");
+				return;
+			}
+		}
+		System.out.println("Aucun événement trouvé");
+	}
+	
+	public EventId getCorrectId(EventId id){
+		for (Evenement e : evenements){
+			if(e.id().equals(id)){
+				return getCorrectId(id.increment());
+			}
+		}
+		return id;
 	}
 }

@@ -33,6 +33,7 @@ public class AddPeriodicCommand implements AppStateCommand {
 		System.out.print("Lieu : ");
 		String lieu = scanner.nextLine();
 		
+		EventId eventId = new EventId((int) (Math.random() * 1000) + 1);
 		TitreEvenement titreEvenement = new TitreEvenement(titre);
 		ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(state.getUtilisateur().nom());
 		DateDebutEvenement dateDebutEvenement = new DateDebutEvenement(LocalDateTime.of(annee, mois, jour, heure, minute));
@@ -43,7 +44,9 @@ public class AddPeriodicCommand implements AppStateCommand {
 		TypeEvenement typeEvenement = TypeEvenement.PERIODIQUE;
 		PresentateurEvenement presentateurEvenement = new PresentateurEvenement("");
 		
-		state.getCalendar().ajouterEvenement(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement, lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement, presentateurEvenement);
+		Evenement e = new Evenement(eventId, titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement, lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement, presentateurEvenement);
+		
+		state.getCalendar().ajouterEvenement(e);
 		System.out.println("Événement périodique ajouté.");
 		return state;
 	}

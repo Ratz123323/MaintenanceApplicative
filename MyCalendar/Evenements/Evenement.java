@@ -4,9 +4,9 @@ import Evenements.TypeEvenements.*;
 
 import java.util.Map;
 
-public record Evenement(TitreEvenement titre, ProprietaireEvenement proprietaire, DateDebutEvenement dateDebut,
+public record Evenement(EventId id, TitreEvenement titre, ProprietaireEvenement proprietaire, DateDebutEvenement dateDebut,
                         DureeMinutesEvenement dureeMinutes, LieuEvenement lieu, ParticipantsEvenement participants,
-                        FrequenceJoursEvenement frequenceJours, TypeEvenement type, PresentateurEvenement presetateur) {
+                        FrequenceJoursEvenement frequenceJours, TypeEvenement type, PresentateurEvenement presentateur) {
     
     // Mappage des types d'événements à leurs descriptions
     private static final Map<TypeEvenement, EvenementDescription> descriptions = Map.of(

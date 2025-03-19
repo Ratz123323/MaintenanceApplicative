@@ -1,12 +1,11 @@
 import Evenements.*;
 import Evenements.TypeEvenements.*;
 import State.*;
-import Main.*;
+import UsersInformations.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.io.ByteArrayInputStream;
+
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -29,6 +28,7 @@ class DetectEventConflictTest {
 	@Test
 	void testDetectConflictWhenAddingEvent() {
 		// Ajout du premier événement
+		EventId eventId1 = new EventId(1);
 		TitreEvenement titre1 = new TitreEvenement("Réunion Projet");
 		ProprietaireEvenement proprietaire1 = new ProprietaireEvenement("TestUser");
 		DateDebutEvenement dateDebut1 = new DateDebutEvenement(LocalDateTime.of(2025, 5, 10, 14, 0));
@@ -38,9 +38,12 @@ class DetectEventConflictTest {
 		FrequenceJoursEvenement frequence1 = new FrequenceJoursEvenement(1);
 		PresentateurEvenement presentateur1 = new PresentateurEvenement("Dr. Smith");
 		
-		calendar.ajouterEvenement(titre1, proprietaire1, dateDebut1, duree1, lieu1, participants1, frequence1, TypeEvenement.REUNION, presentateur1);
+		Evenement e1 = new Evenement(eventId1, titre1, proprietaire1, dateDebut1, duree1, lieu1, participants1, frequence1, TypeEvenement.REUNION, presentateur1);
+		
+		calendar.ajouterEvenement(e1);
 		
 		// Ajout d'un deuxième événement qui chevauche le premier
+		EventId eventId2 = new EventId(2);
 		TitreEvenement titre2 = new TitreEvenement("Réunion Marketing");
 		ProprietaireEvenement proprietaire2 = new ProprietaireEvenement("TestUser");
 		DateDebutEvenement dateDebut2 = new DateDebutEvenement(LocalDateTime.of(2025, 5, 10, 14, 30)); // Chevauche à partir de 14:30
@@ -50,7 +53,9 @@ class DetectEventConflictTest {
 		FrequenceJoursEvenement frequence2 = new FrequenceJoursEvenement(1);
 		PresentateurEvenement presentateur2 = new PresentateurEvenement("Dr. Johnson");
 		
-		calendar.ajouterEvenement(titre2, proprietaire2, dateDebut2, duree2, lieu2, participants2, frequence2, TypeEvenement.REUNION, presentateur2);
+		Evenement e2 = new Evenement(eventId1, titre1, proprietaire1, dateDebut1, duree1, lieu1, participants1, frequence1, TypeEvenement.REUNION, presentateur1);
+		
+		calendar.ajouterEvenement(e2);
 		
 		// Vérification de la sortie pour détecter un conflit
 		String output = outputStream.toString();
