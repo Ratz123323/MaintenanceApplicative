@@ -28,7 +28,7 @@ public class CalendarManager {
         return listeEvenements.conflit(e1, e2);
     }
     
-    public List<Evenement> obtenirEvenementsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
-        return listeEvenements.evenementsDansPeriode(debut, fin);
+    public void obtenirEvenementsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+        // TODO
     }
 }
