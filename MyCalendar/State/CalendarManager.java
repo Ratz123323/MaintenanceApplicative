@@ -15,8 +15,8 @@ public class CalendarManager {
     
     public void ajouterEvenement(TitreEvenement titre, ProprietaireEvenement proprietaire, DateDebutEvenement dateDebut,
                                  DureeMinutesEvenement dureeMinutes, LieuEvenement lieu, ParticipantsEvenement participants,
-                                 FrequenceJoursEvenement frequenceJours, TypeEvenement type) {
-        Evenement e = new Evenement(titre, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours, type);
+                                 FrequenceJoursEvenement frequenceJours, TypeEvenement type, PresentateurEvenement presentateur) {
+        Evenement e = new Evenement(titre, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours, type, presentateur);
         listeEvenements.ajouterEvenement(e);
     }
     

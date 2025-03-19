@@ -33,6 +33,7 @@ public class AddRdvCommand implements AppStateCommand {
 		System.out.print("Lieu : ");
 		String lieu = scanner.nextLine();
 		TitreEvenement titreEvenement = new TitreEvenement(titre);
+		
 		ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(state.getUtilisateur().nom());
 		DateDebutEvenement dateDebutEvenement = new DateDebutEvenement(LocalDateTime.of(annee, mois, jour, heure, minute));
 		DureeMinutesEvenement dureeMinutesEvenement = new DureeMinutesEvenement(duree);
@@ -40,7 +41,9 @@ public class AddRdvCommand implements AppStateCommand {
 		ParticipantsEvenement participantsEvenement = new ParticipantsEvenement(Collections.singletonList(""));
 		FrequenceJoursEvenement frequenceJoursEvenement = new FrequenceJoursEvenement(1);
 		TypeEvenement typeEvenement = TypeEvenement.RDV_PERSONNEL;
-		state.getCalendar().ajouterEvenement(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement, lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement);
+		PresentateurEvenement presentateurEvenement = new PresentateurEvenement("");
+		
+		state.getCalendar().ajouterEvenement(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement, lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement, presentateurEvenement);
 		System.out.println("Événement ajouté.");
 		return state;
 	}

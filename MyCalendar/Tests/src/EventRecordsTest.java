@@ -83,7 +83,7 @@ public class EventRecordsTest {
 		ParticipantsEvenement participants = new ParticipantsEvenement(Collections.singletonList("Alice, Bob"));
 		ProprietaireEvenement proprietaire = new ProprietaireEvenement("Roger");
 		TitreEvenement titre = new TitreEvenement("Réunion stratégique");
-		Evenement event = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION);
+		Evenement event = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION, new PresentateurEvenement(""));
 		String description = event.toString();
 		assertTrue(description.contains("Réunion : Réunion stratégique à Salle de conférence avec Alice, Bob"));
 	}
@@ -98,9 +98,9 @@ public class EventRecordsTest {
 		ParticipantsEvenement participants = new ParticipantsEvenement(Collections.singletonList("Alice, Bob"));
 		ProprietaireEvenement proprietaire = new ProprietaireEvenement("Roger");
 		TitreEvenement titre = new TitreEvenement("Réunion stratégique");
-		Evenement eventRdv = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.RDV_PERSONNEL);
-		Evenement eventReunion = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION);
-		Evenement eventPeriodique = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.PERIODIQUE);
+		Evenement eventRdv = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.RDV_PERSONNEL, new PresentateurEvenement(""));
+		Evenement eventReunion = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.REUNION, new PresentateurEvenement(""));
+		Evenement eventPeriodique = new Evenement(titre, proprietaire, dateDebut, duree, lieu, participants, frequence, TypeEvenement.PERIODIQUE, new PresentateurEvenement(""));
 		assertTrue(eventRdv.toString().contains("RDV"));
 		assertTrue(eventReunion.toString().contains("Réunion"));
 		assertTrue(eventPeriodique.toString().contains("Événement périodique"));

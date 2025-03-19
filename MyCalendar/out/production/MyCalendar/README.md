@@ -14,7 +14,7 @@ Pour pimenter un peu les choses, il y aura quelques petites contraintes:
 
 
 ## 📌 Contexte du TP :
-Votre supérieur, fan de *COBOL* et "autodicacte" a dévellopé un projet nommé **« *State.CalendarManager* »** (oui, une application avec un nom anglais, c'est plus classe), une application minimaliste de gestion d’événements et rendez-vous. Il n'a pas du tout confiance en l'utilisation de code externe (il a déjà fallu batailler pour passer aux fax...), donc il n'est même pas la peine de lui proposer une autre solution, même éprouvée. 
+Votre supérieur, fan de *COBOL* et "autodidacte" a développé un projet nommé **« *State.CalendarManager* »** (oui, une application avec un nom anglais, c'est plus classe), une application minimaliste de gestion d’événements et rendez-vous. Il n'a pas du tout confiance en l'utilisation de code externe (il a déjà fallu batailler pour passer aux fax...), donc il n'est même pas la peine de lui proposer une autre solution, même éprouvée. 
 
 L’application souffre d’une mauvaise conception initiale (utilisation excessive de primitives, couplage fort, répétitions de conditionnels, etc.).
 
@@ -24,7 +24,7 @@ Votre rôle est d'appliquer une stratégie de refactoring progressif afin de tra
 ## 🚧 Contraintes techniques imposées :
 
 ### Baby-steps
-On ne casses pas tout d'un coup, on essaie de faire d'abord un nettoyage progressif pour réduire la quantité de code, puis on restructure.
+On ne casse pas tout d'un coup, on essaie de faire d'abord un nettoyage progressif pour réduire la quantité de code, puis on restructure.
 
 ### Développement des nouvelles fonctionnalités guidé par les tests (TDD) :
 Chaque fonctionnalité doit être écrite en suivant strictement la démarche TDD :
@@ -88,6 +88,6 @@ Respect strict des contraintes techniques :
 ## 🚀 Suggestions d’évolution ultérieure possible (non obligatoire mais bonus) :
 - Sérialisation/Désérialisation vers JSON. **+1** 
 - Ajout d'une interface utilisateur minimale. **+3**
-- Une idée, ben go, fait des beaux commits et je verrais bien ce que ça vaut. **+X**
+- Une idée, ben go, fait des beaux commits et je verrai bien ce que ça vaut. **+X**
 
 **Rappel: Un bonus est un bonus, le projet, hors bonus, est noté sur 20. Les bonus permettent juste de récuppérer des points potentiellement perdus.**

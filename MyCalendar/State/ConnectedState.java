@@ -16,11 +16,12 @@ public class ConnectedState implements AppState {
 		this.gestionUtilisateurs = gestionUtilisateurs;
 		this.calendar = calendar;
 		this.commandes = Map.of(
-				"1", cs -> new ShowEventsCommand(cs),
-				"2", cs -> new AddRdvCommand(cs),
-				"3", cs -> new AddReunionCommand(cs),
-				"4", cs -> new AddPeriodicCommand(cs),
-				"5", cs -> new DisconnectCommand(cs)
+				"1", ShowEventsCommand::new,
+				"2", AddRdvCommand::new,
+				"3", AddReunionCommand::new,
+				"4", AddConferenceCommand::new,
+				"5", AddPeriodicCommand::new,
+				"6", DisconnectCommand::new
 		);
 	}
 	private void displayMenu() {
@@ -29,8 +30,9 @@ public class ConnectedState implements AppState {
 		System.out.println("1 - Voir les événements");
 		System.out.println("2 - Ajouter un rendez-vous perso");
 		System.out.println("3 - Ajouter une réunion");
-		System.out.println("4 - Ajouter un évènement périodique");
-		System.out.println("5 - Se déconnecter");
+		System.out.println("4 - Ajouter une conférence");
+		System.out.println("5 - Ajouter un évènement périodique");
+		System.out.println("6 - Se déconnecter");
 		System.out.print("Votre choix : ");
 	}
 	public AppState run(Scanner scanner) {

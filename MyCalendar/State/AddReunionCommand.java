@@ -35,6 +35,7 @@ public class AddReunionCommand implements AppStateCommand {
 		System.out.print("Ajouter des participants (séparés par une virgule) : ");
 		String autres = scanner.nextLine();
 		String participants = state.getUtilisateur().nom() + (autres.trim().isEmpty() ? "" : ", " + autres);
+		
 		TitreEvenement titreEvenement = new TitreEvenement(titre);
 		ProprietaireEvenement proprietaireEvenement = new ProprietaireEvenement(state.getUtilisateur().nom());
 		DateDebutEvenement dateDebutEvenement = new DateDebutEvenement(LocalDateTime.of(annee, mois, jour, heure, minute));
@@ -43,7 +44,9 @@ public class AddReunionCommand implements AppStateCommand {
 		ParticipantsEvenement participantsEvenement = new ParticipantsEvenement(Collections.singletonList(participants));
 		FrequenceJoursEvenement frequenceJoursEvenement = new FrequenceJoursEvenement(1);
 		TypeEvenement typeEvenement = TypeEvenement.REUNION;
-		state.getCalendar().ajouterEvenement(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement, lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement);
+		PresentateurEvenement presentateurEvenement = new PresentateurEvenement("");
+		
+		state.getCalendar().ajouterEvenement(titreEvenement, proprietaireEvenement, dateDebutEvenement, dureeMinutesEvenement, lieuEvenement, participantsEvenement, frequenceJoursEvenement, typeEvenement, presentateurEvenement);
 		System.out.println("Réunion ajoutée.");
 		return state;
 	}
