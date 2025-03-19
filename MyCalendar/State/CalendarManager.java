@@ -18,36 +18,15 @@ public class CalendarManager {
                                  FrequenceJoursEvenement frequenceJours, TypeEvenement type, PresentateurEvenement presentateur) {
         Evenement e = new Evenement(titre, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours, type, presentateur);
         
-        boolean conflit = false;
-        
-        for (Evenement event : listeEvenements.obtenirEvenements()){
-            if(verifierConflit(e, event)){
-                conflit = true;
-                System.out.println("Conflit avec l'événement suivant : " + event);
-                break;
-            }
-        }
-        if(!conflit){
-            listeEvenements.ajouterEvenement(e);
-        }
+        listeEvenements.ajouterSiPasDeConflit(e);
     }
     
     public void afficherEvenements() {
         listeEvenements.afficherEvenements();
     }
     
-    public boolean verifierConflit(Evenement e1, Evenement e2) {
-        return listeEvenements.conflit(e1, e2);
-    }
-    
     public void obtenirEvenementsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
         List<Evenement> events = listeEvenements.evenementsDansPeriode(debut, fin);
-        if (events.isEmpty()) {
-            System.out.println("Aucun événement trouvé.");
-        } else {
-            for (Evenement e : events) {
-                System.out.println(e);
-            }
-        }
+        listeEvenements.affichageConflit(events);
     }
 }

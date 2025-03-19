@@ -67,4 +67,33 @@ public class ListeEvenements {
 		}
 		return false;
 	}
+	
+	public void ajouterSiPasDeConflit(Evenement event){
+		boolean conflit = false;
+		
+		for (Evenement e : evenements){
+			if(verifierConflit(event, e)){
+				conflit = true;
+				System.out.println("Conflit avec l'événement suivant : " + e);
+				break;
+			}
+		}
+		if(!conflit){
+			ajouterEvenement(event);
+		}
+	}
+	
+	public boolean verifierConflit(Evenement e1, Evenement e2) {
+		return conflit(e1, e2);
+	}
+	
+	public void affichageConflit(List<Evenement> events){
+		if (events.isEmpty()) {
+			System.out.println("Aucun événement trouvé.");
+		} else {
+			for (Evenement e : events) {
+				System.out.println(e);
+			}
+		}
+	}
 }
