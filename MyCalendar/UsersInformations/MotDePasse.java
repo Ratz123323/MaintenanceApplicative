@@ -1,6 +1,7 @@
 package UsersInformations;
 
 public class MotDePasse {
+	
 	private final String motDePasse;
 	
 	public MotDePasse(String motDePasse) {
