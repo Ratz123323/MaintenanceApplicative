@@ -29,6 +29,13 @@ public class CalendarManager {
     }
     
     public void obtenirEvenementsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
-        // TODO
+        List<Evenement> events = listeEvenements.evenementsDansPeriode(debut, fin);
+        if (events.isEmpty()) {
+            System.out.println("Aucun événement trouvé.");
+        } else {
+            for (Evenement e : events) {
+                System.out.println(e);
+            }
+        }
     }
 }
